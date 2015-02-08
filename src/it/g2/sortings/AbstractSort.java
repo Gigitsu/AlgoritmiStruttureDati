@@ -1,16 +1,15 @@
 package it.g2.sortings;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import it.g2.commons.Algorithm;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 /**
  * Created by gigitsu on 07/02/15.
  */
-public abstract class AbstractSort {
+public abstract class AbstractSort extends Algorithm {
 
     public static final int ASC = 1;
     public static final int DESC = -1;
@@ -55,17 +54,5 @@ public abstract class AbstractSort {
                 min = i;
         }
         return min;
-    }
-
-    private int opcount = 0;
-
-    public int getOpCount() { return opcount; }
-
-    protected void resetOpCount() { opcount = 0; }
-
-    protected void incOpCount() { ++opcount; }
-
-    private static final class RandomNumberGeneratorHolder {
-        static final Random randomNumberGenerator = new Random();
     }
 }
