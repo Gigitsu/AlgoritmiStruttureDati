@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class SelectionSort extends AbstractSort {
     @Override
-    public <T extends Comparable<T>> void sort(List<T> list, int order) {
+    public <T extends Comparable<? super T>> void sort(List<T> list, int order) {
         resetOpCount();
 
         for (int i = 0; i < list.size()-1; i++) {

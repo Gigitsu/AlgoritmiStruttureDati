@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class InsertionSort extends AbstractSort {
     @Override
-    public <T extends Comparable<T>> void sort(List<T> list, int order) {
+    public <T extends Comparable<? super T>> void sort(List<T> list, int order) {
         resetOpCount();
 
         swap(list, indexOfMin(list, 0, order), 0);

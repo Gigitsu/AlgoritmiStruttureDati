@@ -7,13 +7,13 @@ import java.util.List;
  */
 public class BinarySearch extends AbstractSearch {
     @Override
-    public <T extends Comparable<T>> int indexOf(List<T> list, T item, int order) {
+    public <T extends Comparable<? super T>> int indexOf(List<T> list, T item, int order) {
         resetOpCount();
 
         return recursiveSearch(list, item, 0, list.size()-1, order);
     }
 
-    private <T extends Comparable<T>> int recursiveSearch(List<T> list, T item, int from, int to, int order) {
+    private <T extends Comparable<? super T>> int recursiveSearch(List<T> list, T item, int from, int to, int order) {
         if (from > to) return -1;
 
         int m = (from + to) / 2;

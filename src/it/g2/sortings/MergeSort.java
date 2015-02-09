@@ -8,12 +8,12 @@ import java.util.List;
  */
 public class MergeSort extends AbstractSort {
     @Override
-    public <T extends Comparable<T>> void sort(List<T> list, int order) {
+    public <T extends Comparable<? super T>> void sort(List<T> list, int order) {
         resetOpCount();
         recursiveSort(list, 0, list.size()-1, order);
     }
 
-    private <T extends Comparable<T>> void recursiveSort(List<T> list, int from, int to, int order) {
+    private <T extends Comparable<? super T>> void recursiveSort(List<T> list, int from, int to, int order) {
         if (from >= to) return;
 
         int m = (from + to) / 2;
@@ -22,7 +22,7 @@ public class MergeSort extends AbstractSort {
         merge(list, from, m, to, order);
     }
 
-    private <T extends Comparable<T>> void merge(List<T> list, int from, int m, int to, int order) {
+    private <T extends Comparable<? super T>> void merge(List<T> list, int from, int m, int to, int order) {
         ArrayList<T> aus = new ArrayList<>(to-from);
         int i = from;
         int j = m+1;

@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class BubbleSort extends AbstractSort {
     @Override
-    public <T extends Comparable<T>> void sort(List<T> list, int order) {
+    public <T extends Comparable<? super T>> void sort(List<T> list, int order) {
         resetOpCount();
 
         for (int i = 1; i < list.size(); i++) {

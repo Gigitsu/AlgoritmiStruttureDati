@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class SequentialSearch extends AbstractSearch {
     @Override
-    public <T extends Comparable<T>> int indexOf(List<T> list, T item, int order) {
+    public <T extends Comparable<? super T>> int indexOf(List<T> list, T item, int order) {
         resetOpCount();
 
         for (int i = 0; i < list.size(); i++) {

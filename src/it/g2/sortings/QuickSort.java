@@ -1,6 +1,5 @@
 package it.g2.sortings;
 
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -8,12 +7,12 @@ import java.util.List;
  */
 public class QuickSort extends AbstractSort {
     @Override
-    public <T extends Comparable<T>> void sort(List<T> list, int order) {
+    public <T extends Comparable<? super T>> void sort(List<T> list, int order) {
         resetOpCount();
         recursiveSort(list, 0, list.size() - 1, order);
     }
 
-    private <T extends Comparable<T>> void recursiveSort(List<T> list, int from, int to, int order) {
+    private <T extends Comparable<? super T>> void recursiveSort(List<T> list, int from, int to, int order) {
         if (to - from < 1) return;
 
         int split = partition(list, from, to, order);
@@ -26,7 +25,7 @@ public class QuickSort extends AbstractSort {
         }
     }
 
-    private <T extends Comparable<T>> int partition(List<T> list, int from, int to, int order) {
+    private <T extends Comparable<? super T>> int partition(List<T> list, int from, int to, int order) {
         int i = from + 1; int j = to; int m = (from + to)/2;
         T pivot = list.get(m);
         swap(list, from, m);

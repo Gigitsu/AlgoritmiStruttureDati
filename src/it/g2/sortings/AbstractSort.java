@@ -4,7 +4,6 @@ import it.g2.commons.Algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by gigitsu on 07/02/15.
@@ -14,10 +13,10 @@ public abstract class AbstractSort extends Algorithm {
     public static final int ASC = 1;
     public static final int DESC = -1;
 
-    public <T extends Comparable<T>> void sort(List<T> list) {
+    public <T extends Comparable<? super T>> void sort(List<T> list) {
         sort(list, ASC);
     }
-    public abstract <T extends Comparable<T>> void sort(List<T> list, int order);
+    public abstract <T extends Comparable<? super T>> void sort(List<T> list, int order);
 
     public static List<Integer> mkRandomList() {
         return mkRandomList( RandomNumberGeneratorHolder.randomNumberGenerator.nextInt(1000) );
@@ -38,15 +37,15 @@ public abstract class AbstractSort extends Algorithm {
         list.set(from, tmp);
     }
 
-    protected <T extends Comparable<T>> boolean isOrdered(T first, T second, int order) {
+    protected <T extends Comparable<? super T>> boolean isOrdered(T first, T second, int order) {
         return isUnordered(first, second, order*DESC);
     }
 
-    protected <T extends Comparable<T>> boolean isUnordered(T first, T second, int order) {
+    protected <T extends Comparable<? super T>> boolean isUnordered(T first, T second, int order) {
         return order*first.compareTo(second) > 0;
     }
 
-    protected <T extends Comparable<T>> int indexOfMin(List<T> ls, int offset, int order) {
+    protected <T extends Comparable<? super T>> int indexOfMin(List<T> ls, int offset, int order) {
         int min = offset;
         for (int i = offset+1; i < ls.size(); i++) {
             incOpCount();
