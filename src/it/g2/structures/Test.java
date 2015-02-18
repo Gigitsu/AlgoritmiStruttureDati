@@ -3,10 +3,7 @@ package it.g2.structures;
 import it.g2.structures.dictionary.Dictionary;
 import it.g2.structures.dictionary.HalvingDoublingDictionary;
 import it.g2.structures.dictionary.RawDictionary;
-import it.g2.structures.list.List;
-import it.g2.structures.list.ListCursor;
-import it.g2.structures.list.ListDoubling;
-import it.g2.structures.list.Position;
+import it.g2.structures.list.*;
 
 /**
  * Created by gigitsu on 09/02/15.
@@ -22,8 +19,11 @@ public class Test {
         System.out.println("********** LIST DOUBLING **********");
         listDoublingTest(new ListDoubling<String>());
 
-        System.out.println("*********** LIST CURSOR ***********");
-        listDoublingTest(new ListCursor<String>());
+		System.out.println("*********** LIST CURSOR ***********");
+		listDoublingTest(new ListCursor<String>());
+
+		System.out.println("*********** LIST LINKED ***********");
+		listDoublingTest(new ListLinked<String>());
     }
 
     private static void dictionaryTest(Dictionary<Integer, String> d) {
@@ -75,10 +75,10 @@ public class Test {
         System.out.println("List isEmpty => " + list.isEmpty());
 
         list.insert(null, list.firstList());
-        list.insert("b", list.firstList());
-        list.insert("c", list.firstList());
-        list.insert("d", list.firstList());
-        list.insert("e", list.firstList());
+        list.insert("John", list.firstList());
+        list.insert("Xabaras", list.firstList());
+        list.insert("Sherlock", list.firstList());
+        list.insert("Dylan", list.firstList());
 
         System.out.print("Filled list => [");
 
@@ -86,8 +86,8 @@ public class Test {
             System.out.print(" " + s);
         System.out.println(" ]");
 
-        System.out.print("Inserting f in second position => [");
-        list.insert("f", list.next(list.firstList()));
+        System.out.print("Inserting Groucho in second position => [");
+        list.insert("Groucho", list.next(list.firstList()));
 
         for (String s:list)
             System.out.print(" " + s);
@@ -125,8 +125,8 @@ public class Test {
         }
         System.out.println(" ]");
 
-        System.out.print("Inserting 'fine' as last element => [");
-        list.insert("fine", p);
+        System.out.print("Inserting 'end' as last element => [");
+        list.insert("end", p);
 
         p = list.firstList();
         while (!list.endList(p)) {
@@ -151,13 +151,15 @@ public class Test {
         System.out.println(" ]");
 
 
-        System.out.print("Set fourth element as 'sovrascritto' => [");
+        System.out.print("Set fourth element as 'overwritten' => [");
         posizione4 = list.next(list.next(list.next(list.firstList())));
-        list.writeList("sovrascritto", posizione4);
+        list.writeList("overwritten", posizione4);
 
         for (String s:list)
             System.out.print(" " + s);
         System.out.println(" ]");
+
+		System.out.println("List isEmpty => " + list.isEmpty());
 
         System.out.println("***********************************");
         System.out.println();
